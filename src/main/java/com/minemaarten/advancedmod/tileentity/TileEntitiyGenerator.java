@@ -180,8 +180,7 @@ public class TileEntitiyGenerator extends TileEntityAdvancedMod implements IInve
                     ++getEnergyStore;
                     GeneratorItemStacks[1].stackSize--;
                 }
-                assert GeneratorItemStacks[1] != null;
-                if (0 == GeneratorItemStacks[1].stackSize) {
+                if (GeneratorItemStacks[1].stackSize == 0) {
                     GeneratorItemStacks[1] = GeneratorItemStacks[1].getItem().getContainerItem(GeneratorItemStacks[1]);
                 }
             }
