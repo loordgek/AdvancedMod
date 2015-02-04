@@ -42,4 +42,7 @@ public class Log{
     public static void warn(Object object){
         log(Level.WARN, object);
     }
-}
+
+
+    }
+

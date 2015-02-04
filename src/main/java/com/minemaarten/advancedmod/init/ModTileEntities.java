@@ -1,5 +1,6 @@
 package com.minemaarten.advancedmod.init;
 
+import com.minemaarten.advancedmod.tileentity.TileEntitiyGenerator;
 import com.minemaarten.advancedmod.tileentity.TileEntityCamoMine;
 import com.minemaarten.advancedmod.utility.Names;
 
@@ -10,5 +11,6 @@ public class ModTileEntities{
     public static void init(){
 
         GameRegistry.registerTileEntity(TileEntityCamoMine.class, Names.TileEntities.CAMO_MINE);
+        GameRegistry.registerTileEntity(TileEntitiyGenerator.class, Names.TileEntities.Block_gen);
     }
 }
