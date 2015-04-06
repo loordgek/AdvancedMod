@@ -1,3 +1,8 @@
 /eclipse
 .gradle
 /bin
+/*.iml
+/*.ipr
+/*.iws
+/setup.bat
+/out
