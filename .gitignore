@@ -1,2 +1,7 @@
 /eclipse
 .gradle
+/*.iml
+/*.ipr
+/*.iws
+/setup.bat
+/build

@@ -52,6 +52,7 @@ public class TileEntitiyGenerator extends TileEntityAdvancedMod implements IInve
         extractEnergy = tag.getInteger("extractEnergy");
         burnTime = tag.getInteger("burnTime");
         totalBurnTime = tag.getInteger("totalBurnTime");
+        Log.info(tag);
 
         GeneratorItemStacks = new ItemStack[1];
         NBTTagList GeneratorItemStackstag = tag.getTagList("GeneratorItemStacks", 10);
@@ -173,16 +174,23 @@ public class TileEntitiyGenerator extends TileEntityAdvancedMod implements IInve
     public void updateEntity() {
         if (!worldObj.isRemote) {
             if (burnTime == 0) {
-                Log.info(burnTime);
-                if (GeneratorItemStacks[1] != null) {
-                    burnTime = this.totalBurnTime = TileEntityFurnace.getItemBurnTime(this.GeneratorItemStacks[1]);
-                    --burnTime;
-                    ++getEnergyStore;
-                    GeneratorItemStacks[1].stackSize--;
+                if (getEnergyStore <= getMaxEnergyStore)
+                { this.burnTime = this.totalBurnTime = TileEntityFurnace.getItemBurnTime(this.GeneratorItemStacks[0]);
+                    if (this.GeneratorItemStacks[0] != null)
+                    {
+                        --this.GeneratorItemStacks[0].stackSize;
+
+                        if (this.GeneratorItemStacks[0].stackSize == 0)
+                        {
+                            this.GeneratorItemStacks[0] = GeneratorItemStacks[0].getItem().getContainerItem(GeneratorItemStacks[0]);
+                        }
+                    }
                 }
-                if (GeneratorItemStacks[1].stackSize == 0) {
-                    GeneratorItemStacks[1] = GeneratorItemStacks[1].getItem().getContainerItem(GeneratorItemStacks[1]);
-                }
+            }
+            if (burnTime > 0){
+                getEnergyStore ++;
+                burnTime --;
+
             }
         }
     }
